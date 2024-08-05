@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
 import { register, login } from '../controllers/authController.js';
+import { getAllUsers, deleteUser } from '../controllers/userController.js';
+import adminMiddleware from '../middleware/adminMiddleware.js';
 
 const router = Router();
 router.post(
@@ -21,5 +23,8 @@ router.post(
   ],
   login
 );
+
+router.get('/', adminMiddleware,getAllUsers);
+router.delete('/:id',adminMiddleware, deleteUser);
 
 export default router;
