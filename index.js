@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import usersRoutes from './routes/users.routes.js';
 import connectToDatabase from "./database/connection.js";
 import classRoutes from './routes/class.routes.js';
+import fileRoutes from './routes/file.routes.js';
 
 const app = express();
 dotenv.config();
@@ -11,6 +12,7 @@ app.use(express.json());
 
 app.use('/users', usersRoutes);
 app.use('/classes', classRoutes);
+app.use('/files', fileRoutes);
 
 app.listen(8080, () => {
   console.log('Server running on port 8080');
