@@ -32,6 +32,19 @@ export const getAllWithdrawals = async (req, res) => {
     res.status(500).send('Server error');
   }
 };
+export const getUserWithdrawals = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const withdrawals = await Withdrawal.find({ userId })
+      .populate('userId')
+      .populate('classId');
+    res.json(withdrawals);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+};
 
 export const approveWithdrawal = async (req, res) => {
   const { id } = req.params;

@@ -6,11 +6,13 @@ import classRoutes from './routes/class.routes.js';
 import fileRoutes from './routes/file.routes.js';
 import enrollmentRoutes from './routes/enrollments.routes.js';
 import withdrawalRoutes from './routes/withdrawal.routes.js';
+import cors from 'cors';
 
 const app = express();
 dotenv.config();
 
 app.use(express.json());
+app.use(cors());
 
 app.use('/users', usersRoutes);
 app.use('/classes', classRoutes);
